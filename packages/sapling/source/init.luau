@@ -1,7 +1,13 @@
+local Dispatchers = require(script.Dispatchers)
 local BaseDispatcher = require(script.classes.BaseDispatcher)
 local Lifecycle = require(script.classes.Lifecycle)
 local ServiceManager = require(script.modules.ServiceManager)
 local filterArray = require(script.modules.filterArray)
+local types = require(script.types)
+
+export type Service = types.Service
+export type BaseDispatcher = BaseDispatcher.BaseDispatcher
+export type Lifecycle = Lifecycle.Lifecycle
 
 local function instanceOf(className: string)
 	return function(instance: Instance)
@@ -40,5 +46,7 @@ function Sapling.extendBaseDispatcher()
 
 	return newDispatcher
 end
+
+Sapling.Dispatchers = Dispatchers
 
 return Sapling
