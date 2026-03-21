@@ -2,9 +2,6 @@
 
 Sapling is the successor of [Catalyst](https://github.com/Sebastian2852/Catalyst) which had some fundemental issues which would take recoding basically the whole thing to fix so I decided to make a new framework.
 
-> [!WARNING]
-> Sapling is currently pre 1.0, so expect stuff to be broken or not work as intended. Contributions are welcome. A documentation website will be coming soon.
-
 ## Usage
 
 To use sapling you will need to have [pesde](https://pesde.dev/) installed as well as a project setup for a Roblox environment.
