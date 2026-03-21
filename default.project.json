@@ -1,4 +1,5 @@
 {
+    "emitLegacyScripts": false,
     "name": "sapling-serve",
     "tree": {
         "$className": "DataModel",
@@ -6,6 +7,15 @@
         "ReplicatedStorage": {
             "packages": {
                 "$path": "packages/"
+            },
+            "sapling-testing": {
+                "$path": "source/client"
+            }
+        },
+
+        "ServerScriptService": {
+            "sapling-testing": {
+                "$path": "source/server"
             }
         }
     }
