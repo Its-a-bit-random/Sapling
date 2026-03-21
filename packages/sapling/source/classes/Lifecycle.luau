@@ -3,6 +3,9 @@ local Dispatchers = require(script.Parent.Parent.Dispatchers)
 
 local lifecycles = {} :: { [string]: Lifecycle }
 
+--[=[
+	@class Lifecycle
+]=]
 local Lifecycle = {}
 Lifecycle.__index = Lifecycle
 
@@ -14,6 +17,12 @@ export type Lifecycle = typeof(setmetatable(
 	Lifecycle
 ))
 
+--[=[
+	@param dispatcher BaseDispatcher
+ 
+	Create a new Lifecycle with the given `name`. You can optionally pass a dispatcher to use,
+	it defaults to an AsyncDispatcher if nothing is passed.
+]=]
 function Lifecycle.new(name: string, dispatcher: BaseDispatcher.BaseDispatcher?)
 	if lifecycles[name] ~= nil then
 		return lifecycles[name]
@@ -40,7 +49,15 @@ function Lifecycle.new(name: string, dispatcher: BaseDispatcher.BaseDispatcher?)
 	return self
 end
 
-function Lifecycle.fire(self: Lifecycle, ...)
+--[=[
+	@method fire
+	@param ... any
+	@within Lifecycle
+	
+	Fires the lifecycle, anything passed into `...` will also be passed to every function which this
+	lifecycle invokes.
+]=]
+function Lifecycle.fire(self: Lifecycle, ...: any)
 	self._Dispatcher:dispatch(self._Name, ...)
 end
 
