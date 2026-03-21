@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[930],{4410:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/Apple-Pear-Studios/Sapling/blob/main","baseUrl":"/Sapling/","classOrder":[],"apiCategories":[]}')}}]);
