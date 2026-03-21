@@ -10,6 +10,6 @@ When installing a package from the Sapling Framework you need to specify the tag
 under the `packages/` folder in the root of the repo.
 
 :::warning
-It is VIAL that you use the same commit or tag for ALL Sapling Framework packages as otherwise the packages may not be able to work togheter 
+It is VITAL that you use the same commit or tag for ALL Sapling Framework packages as otherwise the packages may not be able to work togheter 
 properly.
 :::
