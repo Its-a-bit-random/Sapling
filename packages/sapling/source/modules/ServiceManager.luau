@@ -13,6 +13,16 @@ function ServiceManager.addService(module: ModuleScript, service: Service?)
 			error(`[SAPLING] Error while requiring module: {module:GetFullName()}: {requiredService}`)
 			return
 		end
+
+		if typeof(requiredService) ~= "table" then
+			warn(
+				`Skipping: {module:GetFullName()} as it doesnt return a table but instead returns {typeof(
+					requiredService
+				)}`
+			)
+			return
+		end
+
 		service = requiredService :: Service
 	end
 
