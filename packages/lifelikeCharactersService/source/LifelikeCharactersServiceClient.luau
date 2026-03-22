@@ -48,9 +48,6 @@ local config = {
 		[Enum.Material.Glacier] = defaultSounds.Gravel,
 		[Enum.Material.Slate] = defaultSounds.Gravel,
 
-		[Enum.Material.WoodPlanks] = defaultSounds.Wood,
-		[Enum.Material.LeafyGrass] = defaultSounds.Grass,
-
 		[Enum.Material.Ice] = defaultSounds.Marble,
 		[Enum.Material.Salt] = defaultSounds.Marble,
 		[Enum.Material.Marble] = defaultSounds.Marble,
@@ -60,6 +57,11 @@ local config = {
 		[Enum.Material.Foil] = defaultSounds.Metal,
 		[Enum.Material.DiamondPlate] = defaultSounds.Metal,
 		[Enum.Material.CorrodedMetal] = defaultSounds.Metal,
+
+		[Enum.Material.WoodPlanks] = defaultSounds.Wood,
+		[Enum.Material.LeafyGrass] = defaultSounds.Grass,
+		[Enum.Material.Fabric] = defaultSounds.Fabric,
+		[Enum.Material.Carpet] = defaultSounds.Fabric,
 	} :: { [Enum.Material]: string },
 }
 
