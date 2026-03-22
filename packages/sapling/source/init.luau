@@ -55,7 +55,7 @@ end
 function Sapling.loadPackages(packagesFolder: Folder)
 	assert(not havePackagesBeenStarted, "You can only call loadPackages one time")
 
-	local instances = packagesFolder:GetDescendants()
+	local instances = packagesFolder:GetChildren()
 	local modules = filterArray(instances, instanceOf("ModuleScript")) :: { ModuleScript }
 
 	_G.Sapling = Packages.getGlobalAPI()
