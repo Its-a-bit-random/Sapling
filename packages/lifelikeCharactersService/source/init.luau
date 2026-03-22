@@ -5,7 +5,7 @@ assert(sapling, "Cannot find sapling, have you called, loadPackages?")
 sapling.addModule(script)
 
 --[=[
-	@class LifelikeCharacters
+	@class lifelikeCharactersService
 	A simple package to automatically bring characters to life by doing the following:
 	- Better footstep sounds
 	- Seeing your body in first person

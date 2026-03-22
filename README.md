@@ -25,4 +25,4 @@ Note how the path to the package has to be aded due to this repo being a mono-re
 | Package | Path | Docs |
 | :-----: | :--: | :---: |
 | Sapling | `packages/sapling` | [Docs](https://apple-pear-studios.github.io/Sapling/api/Sapling) |
-| Lifelike Character | `packages/lifelikeCharacter` | [Docs](https://apple-pear-studios.github.io/Sapling/api/LifelikeCharacter) |
+| Lifelike Characters Service | `packages/lifelikeCharactersService` | [Docs](https://apple-pear-studios.github.io/Sapling/api/LifelikeCharactersService) |
