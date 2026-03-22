@@ -3,3 +3,4 @@ Modified for the Sapling Framework, the following changes have been made:
 - Modified main client module types to fix LSP issues.
 - Modified remote event to be found and created by the "getRemote".
 - Removed asserts from local script.
+- Remove the start call to FirstPerson module in client script.

@@ -517,7 +517,6 @@ function module.Start()
 	end
 
 	-- TODO: Tie these to a maid!
-	task.spawn(FirstPerson.Start)
 	humanoidAdded:Connect(onHumanoidAdded)
 	RunService.Stepped:Connect(updateLookAngles)
 	setLookAngles.OnClientEvent:Connect(onLookReceive)
