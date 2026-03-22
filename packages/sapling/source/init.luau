@@ -40,6 +40,17 @@ end
 --[=[
 	This function only needs to be called if you are using any other Sapling Framework packages,
 	simply point it to your Packages folder and Sapling will handle the rest.
+
+	If you do not call this function at the right time, or at all, pacakges will throw an error and tell you that
+	you have not called this function.
+
+	:::warning
+	This function **NEEDS** to be called before you call `loadServices` otherwise packages will error.
+	:::
+
+	:::danger
+	If you use [Actor] you will need to call this in every [Actor] to avoid errors.
+	:::
 ]=]
 function Sapling.loadPackages(packagesFolder: Folder)
 	assert(not havePackagesBeenStarted, "You can only call loadPackages one time")
