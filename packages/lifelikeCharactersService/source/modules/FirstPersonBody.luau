@@ -11,7 +11,7 @@ function FirstPersonBody.makeCharacterVisible()
 	end
 
 	local humanoid = character:WaitForChild("Humanoid")
-	humanoid.CameraOffset = Vector3.new(0, 0, -1)
+	humanoid.CameraOffset = Vector3.new(0, 0, -0.5)
 
 	if character then
 		local tab = {
