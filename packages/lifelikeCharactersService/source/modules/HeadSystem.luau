@@ -1,6 +1,6 @@
 local NECK_MOTOR_NAME = "__NECK_MOTOR__"
 local R15_HEAD_OFFSET = 1.2
-local R6_HEAD_OFFET = 1.5
+local R6_HEAD_OFFET = 1.4
 
 local customOffset: number?
 
@@ -38,7 +38,7 @@ end
 local HeadSystem = {}
 
 --[=[
-	Sets a custom offset for the head. By default the system can handle E6 and R15 rigs automatically however when using
+	Sets a custom offset for the head. By default the system can handle R6 and R15 rigs automatically however when using
 	custom rigs then you can use this function to set a custom offset. If `headoffset` defualt behaviour is restored.
 ]=]
 function HeadSystem.setCustomHeadOffset(headOffset: number?)

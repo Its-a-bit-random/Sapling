@@ -19,6 +19,13 @@ local player = Players.LocalPlayer
 local LifelikeCharactersServiceClient = {}
 
 --[=[
+	[HeadSystem.setCustomHeadOffset]
+]=]
+function LifelikeCharactersServiceClient.setCustomHeadOffset(headOffset: number?)
+	HeadSystem.setCustomHeadOffset(headOffset)
+end
+
+--[=[
     @param material Material
 
     Sets the sound for the passed `material` to be `sound` where if `sound` is nil then the fallback sound is used, this by default is
