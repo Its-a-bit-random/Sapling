@@ -48,7 +48,13 @@ function LifelikeCharactersServiceServer.setup()
 			return
 		end
 
+		if buffer.len(buf) < 4 then
+			return
+		end
+
 		local yAngle, xAngle = Network.desLookAngles(buf)
+
+		-- This is just here to stop players sending garbage data through the event. It clamps between 1 and -1 instead of actually the bounds we want, we do that client side.
 		local newBuf = Network.serLookAngles(math.clamp(yAngle, -1, 1), math.clamp(xAngle, -1, 1))
 
 		for _, v in Players:GetPlayers() do

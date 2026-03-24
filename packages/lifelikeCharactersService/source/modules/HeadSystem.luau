@@ -3,6 +3,8 @@ local R15_HEAD_OFFSET = 1.2
 local R6_HEAD_OFFET = 1.4
 
 local customOffset: number?
+local customLowerBound: number?
+local customUpperBound: number?
 
 local function createNeckMotor(character: Model)
 	local head = character:FindFirstChild("Head")
@@ -43,6 +45,23 @@ local HeadSystem = {}
 ]=]
 function HeadSystem.setCustomHeadOffset(headOffset: number?)
 	customOffset = headOffset
+end
+
+--[=[
+	Sets the clamping values of how far the head can look up and down. Set to nil for default behaviour.
+]=]
+function HeadSystem.setBounds(lower: number?, upper: number?)
+	customLowerBound, customUpperBound = lower, upper
+end
+
+--[=[
+	Calculates the head look angles from the given `cameraCFrame` in relation to the `rootCFrame`.
+]=]
+function HeadSystem.calculateLookAngles(cameraCFrame: CFrame, rootCFrame: CFrame): (number, number)
+	local cameraDireaction = rootCFrame:ToObjectSpace(cameraCFrame).LookVector
+	local yAngle = -math.asin(cameraDireaction.X)
+	local xAngle = math.clamp(math.asin(cameraDireaction.Y), customLowerBound or -0.5, customUpperBound or 0.9)
+	return yAngle, xAngle
 end
 
 --[=[

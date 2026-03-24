@@ -37,6 +37,13 @@ function LifelikeCharactersServiceClient.setHeadRotationReplicationRate(rate: nu
 end
 
 --[=[
+	[HeadSystem.setBounds]
+]=]
+function LifelikeCharactersServiceClient.setHeadRotationClampValues(lower: number?, upper: number?)
+	HeadSystem.setBounds(lower, upper)
+end
+
+--[=[
 	[HeadSystem.setCustomHeadOffset]
 ]=]
 function LifelikeCharactersServiceClient.setCustomHeadOffset(headOffset: number?)
@@ -93,9 +100,7 @@ function LifelikeCharactersServiceClient.setup()
 		local camera = Workspace.CurrentCamera
 		local humanoidRootPart = character:FindFirstChild("HumanoidRootPart") :: Part
 
-		local cameraDireaction = humanoidRootPart.CFrame:ToObjectSpace(camera.CFrame).LookVector
-		local yAngle = -math.asin(cameraDireaction.X)
-		local xAngle = math.asin(cameraDireaction.Y)
+		local yAngle, xAngle = HeadSystem.calculateLookAngles(camera.CFrame, humanoidRootPart.CFrame)
 		HeadSystem.updateLookAngles(character, yAngle, xAngle)
 
 		if count >= headReplication.rate then
