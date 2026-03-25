@@ -14,6 +14,9 @@ example:
 
 ## Unreleased
 
+### Additions
+- New package `QueryBuilder`
+
 ## v1.1.0
 
 ### Additions
