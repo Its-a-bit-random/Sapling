@@ -42,6 +42,35 @@ end
 --[=[
     @tag returns-self
 
+    @method hasAttribute
+    @param attributeName string
+    @return QueryBuilder
+    @within QueryBuilder
+    Anything which has the `attributeName` set to anything but nil
+]=]
+function QueryBuilder.hasAttribute(self: QueryBuilder, attributeName: string)
+	self._Query ..= `[${attributeName}]`
+	return self
+end
+
+--[=[
+    @tag returns-self
+
+    @method hasAttribute
+    @param attributeName string
+    @param attributeValue string | any
+    @return QueryBuilder
+    @within QueryBuilder
+    Anything which has the `attributeName` set to `attributeValue`. See more info about how `attributeValue` works: [QueryBuilder.wherePropertyIs]
+]=]
+function QueryBuilder.whereAttributeIs(self: QueryBuilder, attributeName: string, attributeValue: string | any)
+	self._Query ..= `[${attributeName} = {attributeValue}]`
+	return self
+end
+
+--[=[
+    @tag returns-self
+
     @method whichIsA
     @param class string
     @return QueryBuilder
