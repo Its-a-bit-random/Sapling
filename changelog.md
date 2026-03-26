@@ -14,6 +14,9 @@ example:
 
 ## Unreleased
 
+### Additions
+- New package `QueryBuilder` [#6](https://github.com/Its-a-bit-random/Sapling/pull/6)
+
 ## v1.1.0
 
 ### Additions
