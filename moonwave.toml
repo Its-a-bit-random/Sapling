@@ -6,3 +6,19 @@ changelog = true
 [docusaurus]
 url = "https://sapling.itsabitrandom.com/"
 baseUrl = "/"
+
+[home]
+enabled = true
+includeReadMe = true
+
+[[home.features]]
+title = "Bloat-free"
+description = "You only need to install what you need and almost everything is optional."
+
+[[home.features]]
+title = "Its yours"
+description = "Sapling and all of its pacakges aims to be customisable so that it can be tailored to any game."
+
+[[home.features]]
+title = "Documented"
+description = "As much of the codebase as humanly possible is documented describing what it does and how to use it."
