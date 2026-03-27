@@ -27,3 +27,4 @@ Note how the path to the package has to be aded due to this repo being a mono-re
 | Sapling | `packages/sapling` | [Docs](https://sapling.itsabitrandom.com/api/Sapling) |
 | Lifelike Characters Service | `packages/lifelikeCharactersService` | [Docs](https://sapling.itsabitrandom.com/api/LifelikeCharactersService) |
 | QueryDescendants | `packages/queryDescendants` | [Docs](https://sapling.itsabitrandom.com/api/QueryDescendants) |
+| Registry | `packages/registry` | [Docs](https://sapling.itsabitrandom.com/api/Registry) |

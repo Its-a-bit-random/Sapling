@@ -16,6 +16,7 @@ example:
 
 ### Additions
 - New package `QueryBuilder` [#6](https://github.com/Its-a-bit-random/Sapling/pull/6)
+- New package `Registry` [#9](https://github.com/Its-a-bit-random/Sapling/pull/9)
 
 ## v1.1.0
 

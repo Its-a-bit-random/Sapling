@@ -8,6 +8,12 @@ target = "roblox"
 [workspace."sapling/lifelike_characters_service"]
 roblox = "packages/lifelikeCharactersService"
 
+[workspace."sapling/query_builder"]
+roblox = "packages/queryBuilder"
+
+[workspace."sapling/registry"]
+roblox = "packages/registry"
+
 [workspace."sapling/sapling"]
 roblox = "packages/sapling"
 
