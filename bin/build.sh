@@ -6,3 +6,4 @@ rojo build packages/lifelikeCharactersService -o build/lifelikeCharactersService
 rojo build packages/queryBuilder -o build/queryBuilder.rbxm
 rojo build packages/registry -o build/registry.rbxm
 rojo build packages/sweeper -o build/sweeper.rbxm
+rojo build packages/baseObject -o build/baseObject.rbxm
