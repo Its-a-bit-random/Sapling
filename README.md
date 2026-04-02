@@ -1,6 +1,9 @@
-# Sapling Framework
+<div align="center">
+    <h1>Sapling Framework</h1>
+    <a href="sapling.itsabitrandom.com">View Docs →</a> | <a href="sapling.itsabitrandom.com/docs/installing">Installing Guide →</a>
+</div>
 
-Sapling is *more* than a framework, its an ecosystem, a collection of packages which aim to speed up and improvde DX when developing games on Roblox. Sapling is the successor of [Catalyst](https://github.com/Sebastian2852/Catalyst) which had fundemental issues which would take recoding the whole thing to fix so I decided to make a new framework.
+Sapling Framework is an ecosystem of packages which aim to speed up and improvde DX when developing games on Roblox. Sapling is the successor of [Catalyst](https://github.com/Sebastian2852/Catalyst) which had fundemental issues which would take recoding the whole thing to fix so I decided to make a new framework.
 
 ## Usage
 
@@ -18,6 +21,8 @@ As an example in your Pesde manifest to use the core `Sapling` package, you woul
 [Dependencies]
 Sapling = { repo = "its-a-bit-random/Sapling", rev = "v1.0.0", path = "packages/sapling" }
 ```
+
+More info about installing and consuming packages can be found [here](sapling.itsabitrandom.com/docs/installing)
 
 ## Packages
 
