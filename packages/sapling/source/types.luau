@@ -4,10 +4,10 @@
 ]=]
 
 --[=[
-	@type Service { [string | unknown]: unknown }
+	@type Service { [string | unknown]: unknown } & { ["ServiceName"]: string }
 	@within types
 ]=]
-export type Service = { [string | unknown]: unknown }
+export type Service = { [string | unknown]: unknown } & { ["ServiceName"]: string }
 
 --[=[
 	@interface InjectedAPI

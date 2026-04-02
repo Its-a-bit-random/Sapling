@@ -33,7 +33,18 @@ function Sapling.loadServices(parent: Instance, recursive: boolean?)
 	local modules = filterArray(instances, instanceOf("ModuleScript")) :: { ModuleScript }
 
 	for _, v in modules do
-		ServiceManager.addService(v)
+		local isValid, service = safeRequire(v)
+		if not isValid then
+			warn(`[SAPLING] Failed to require module: {v:GetFullName()}: {service}`)
+			continue
+		end
+
+		if service.ServiceName == nil then
+			warn(`[SAPLING] Service {v:GetFullName()} has no "ServiceName"`)
+			service.ServiceName = v.Name
+		end
+
+		ServiceManager.addService(service)
 	end
 end
 
