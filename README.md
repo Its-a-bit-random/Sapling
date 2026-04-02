@@ -1,29 +1,37 @@
-# Sapling
+<div align="center">
+    <h1>Sapling Framework</h1>
+    <a href="https://sapling.itsabitrandom.com">View Docs →</a> | <a href="https://sapling.itsabitrandom.com/docs/installing">Installing Guide →</a>
+</div>
 
-Sapling is the successor of [Catalyst](https://github.com/Sebastian2852/Catalyst) which had some fundemental issues which would take recoding basically the whole thing to fix so I decided to make a new framework.
+Sapling Framework is an ecosystem of packages which aim to speed up and improvde DX when developing games on Roblox. Sapling is the successor of [Catalyst](https://github.com/Sebastian2852/Catalyst) which had fundemental issues which would take recoding the whole thing to fix so I decided to make a new framework.
 
 ## Usage
 
-To use sapling you will need to have [pesde](https://pesde.dev/) installed as well as a project setup for a Roblox environment.
+To use sapling you will need to have [pesde](https://pesde.dev/) installed and a project setup for a Roblox environment.
 
-Firstly all packages you use sapling need to come from the same commit or tag otherwise they may not work together. The best way is to always stick to tags as they will be created
-on every release and contain the most stable code, you may sometimes want to try out a new feature which hasn't been released yet and will need to use a version based off commits.
+Sapling is versioned using Git tags. All packages you install that are a part of the ecosystem need to be from the same git tag or commit. While not striclty necessary in most cases, in some cases it may be required as a package could depend on anotther.
 
 *Please see [here](https://github.com/pesde-pkg/pesde/issues/59) why this package should be installed via git dependencies and not through a registry.*
+
+Installing pacakges is as simple as adding a dependencies into your `pesde.toml` manifest. You will need to specify a path due to this repo being a mono-repo. In the future we may decide to create a CLI tool to assist with doing so but for now you need to manually add each package, and its peer dependencies.
 
 As an example in your Pesde manifest to use the core `Sapling` package, you would add the following to the dependencies section:
 
 ```toml
 [Dependencies]
-Sapling = { repo = "Apple-Pear-Studios/Sapling", rev = "v1.0.0", path = "packages/sapling" }
+Sapling = { repo = "its-a-bit-random/Sapling", rev = "v1.0.0", path = "packages/sapling" }
 ```
 
-Note how the path to the package has to be aded due to this repo being a mono-repo. In the future I might make a CLI tool to help with this if this project matures enough. However for the time being you will need to specify the path and tag/commit manually.
+More info about installing and consuming packages can be found [here](https://sapling.itsabitrandom.com/docs/installing)
 
 ## Packages
 
+Below is a list of every pacakge and its path and docs link.
+
+<!--moonwave-hide-before-this-line-->
+
 | Package | Path | Docs |
-| :-----: | :--: | :---: |
+| ------- | :--: | :---: |
 | Sapling | `packages/sapling` | [Docs](https://sapling.itsabitrandom.com/api/Sapling) |
 | Lifelike Characters Service | `packages/lifelikeCharactersService` | [Docs](https://sapling.itsabitrandom.com/api/LifelikeCharactersService) |
 | QueryDescendants | `packages/queryDescendants` | [Docs](https://sapling.itsabitrandom.com/api/QueryDescendants) |

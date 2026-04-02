@@ -5,6 +5,9 @@ local lifecycles = {} :: { [string]: Lifecycle }
 
 --[=[
 	@class Lifecycle
+
+	A lifecycle is a class that allows you to call a certain function on every service. For example,
+	you could have an "onStart" lifecycle.
 ]=]
 local Lifecycle = {}
 Lifecycle.__index = Lifecycle

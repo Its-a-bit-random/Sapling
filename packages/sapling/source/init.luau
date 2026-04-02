@@ -51,6 +51,8 @@ end
 	:::danger
 	If you use [Actor] you will need to call this in every [Actor] to avoid errors.
 	:::
+
+	@error "You can only call loadPackages one time" -- You should only call this function once, before you call `loadService`.
 ]=]
 function Sapling.loadPackages(packagesFolder: Folder)
 	assert(not havePackagesBeenStarted, "You can only call loadPackages one time")
