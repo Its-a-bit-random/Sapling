@@ -66,17 +66,28 @@ end
 	Adds a task to the sweeper to be cleaned up.
 ]=]
 function Sweeper.Add(self: Sweeper, task: Sweepable)
-	local isValid = true
+	local isValid = false
+
+	-- Without this then normal roblox connections don't work as they are
+	-- "not" tables (i.e. typeof() doesn't return "table")
+	if typeof(task) == "RBXScriptConnection" then
+		self:Add(function()
+			task:Disconnect()
+		end)
+		return
+	end
 
 	-- TODO:
 	-- Eventually allow you to pass a custom destroy method name
 
 	for _, methodName in DESTROY_METHODS do
 		isValid = SweeperUtils.IsValid(task, methodName)
-		if not isValid then
-			error(`Invalid task: {task}`)
+		if isValid then
+			break
 		end
 	end
+
+	assert(isValid, `Invalid task: {task}`)
 
 	table.insert(self._Tasks, task)
 end
