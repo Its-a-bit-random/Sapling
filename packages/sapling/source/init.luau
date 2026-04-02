@@ -39,6 +39,11 @@ function Sapling.loadServices(parent: Instance, recursive: boolean?)
 			continue
 		end
 
+		if typeof(service) ~= "table" then
+			warn(`[SAPLING] Module {v:GetFullName()} does not return a table; ignoring.`)
+			continue
+		end
+
 		if service.ServiceName == nil then
 			warn(`[SAPLING] Service {v:GetFullName()} has no "ServiceName"`)
 			service.ServiceName = v.Name
