@@ -1,3 +1,4 @@
+rm -rf build
 mkdir build
 
 rojo build packages/sapling -o build/sapling.rbxm
