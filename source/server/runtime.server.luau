@@ -11,4 +11,4 @@ sapling.createLifecycle("blockingTest", BlockingDispatcher.new())
 sapling.fireLifecycle("blockingTest")
 print("Post lifecycle fire call")
 
-print(queryBuilder.new():withTag("CoolTag"):build())
+print(queryBuilder.new():withTag("CoolTag"):query())

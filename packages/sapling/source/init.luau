@@ -26,6 +26,29 @@ local havePackagesBeenStarted = false
 local Sapling = {}
 
 --[=[
+	Load a single service from a module
+]=]
+function Sapling.loadService(serviceModule: ModuleScript)
+	local isValid, service = safeRequire(serviceModule)
+	if not isValid then
+		warn(`[SAPLING] Failed to require module: {serviceModule:GetFullName()}: {service}`)
+		return
+	end
+
+	if typeof(service) ~= "table" then
+		warn(`[SAPLING] Module {serviceModule:GetFullName()} does not return a table; ignoring.`)
+		return
+	end
+
+	if service.ServiceName == nil then
+		warn(`[SAPLING] Service {serviceModule:GetFullName()} has no "ServiceName"`)
+		service.ServiceName = serviceModule.Name
+	end
+
+	ServiceManager.addService(service)
+end
+
+--[=[
 	Loads all module scripts under `parent` ignoring anything which isn't a [ModuleScript] instance.
 ]=]
 function Sapling.loadServices(parent: Instance, recursive: boolean?)
@@ -33,23 +56,7 @@ function Sapling.loadServices(parent: Instance, recursive: boolean?)
 	local modules = filterArray(instances, instanceOf("ModuleScript")) :: { ModuleScript }
 
 	for _, v in modules do
-		local isValid, service = safeRequire(v)
-		if not isValid then
-			warn(`[SAPLING] Failed to require module: {v:GetFullName()}: {service}`)
-			continue
-		end
-
-		if typeof(service) ~= "table" then
-			warn(`[SAPLING] Module {v:GetFullName()} does not return a table; ignoring.`)
-			continue
-		end
-
-		if service.ServiceName == nil then
-			warn(`[SAPLING] Service {v:GetFullName()} has no "ServiceName"`)
-			service.ServiceName = v.Name
-		end
-
-		ServiceManager.addService(service)
+		Sapling.loadService(v)
 	end
 end
 
@@ -86,7 +93,7 @@ function Sapling.loadPackages(packagesFolder: Folder)
 
 	local packageModules = Packages.getModules()
 	for _, v in packageModules do
-		ServiceManager.addService(v)
+		Sapling.loadService(v)
 	end
 
 	Packages.callLifecycles()
