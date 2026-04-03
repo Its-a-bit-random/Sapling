@@ -37,3 +37,4 @@ Below is a list of every pacakge and its path and docs link.
 | QueryBuilder | `packages/queryBuilder` | [Docs](https://sapling.itsabitrandom.com/api/QueryBuilder) |
 | Registry | `packages/registry` | [Docs](https://sapling.itsabitrandom.com/api/Registry) |
 | Sweeper | `packages/sweeper` | [Docs](https://sapling.itsabitrandom.com/api/Sweeper) |
+| BaseObject | `packages/baseObject` | [Docs](https://sapling.itsabitrandom.com/api/BaseObject) |
