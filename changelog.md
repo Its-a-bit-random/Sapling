@@ -18,6 +18,7 @@ example:
 - `sapling`: Service are now meant to be singleton classes.
 
 ### Additions
+- New package `baseObject` [#15](https://github.com/Its-a-bit-random/Sapling/pull/15)
 - New package `sweeper` [#12](https://github.com/Its-a-bit-random/Sapling/pull/12)
 
 ## v1.2.0
