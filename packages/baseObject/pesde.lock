@@ -127,7 +127,7 @@ result = [{ name = "lukadev_0/result", version = "^1.2.1", index = "https://gith
 unzip = [{ name = "0x5eal/unzip", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "luau" }, "standard"]
 
 [graph."sapling/sweeper@0.1.0 roblox"]
-direct = ["Sweeper", { workspace = "sapling/sweeper", version = "=" }, "standard"]
+direct = ["sweeper", { workspace = "sapling/sweeper", version = "=" }, "standard"]
 
 [graph."sapling/sweeper@0.1.0 roblox".pkg_ref]
 ref_ty = "workspace"
