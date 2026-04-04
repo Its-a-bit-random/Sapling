@@ -18,7 +18,7 @@ sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
 scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
 
 [dependencies]
-sweeper = { workspace = "sapling/sweeper", version = "=" }
+Sweeper = { workspace = "sapling/sweeper", version = "=" }
 
 [engines]
 pesde = "^0.7.0"

@@ -130,7 +130,7 @@ unzip = [{ name = "0x5eal/unzip", version = "^0.2.0", index = "https://github.co
 direct = ["BaseObject", { workspace = "sapling/base_object", version = "=" }, "standard"]
 
 [graph."sapling/base_object@0.1.0 roblox".dependencies]
-sweeper = ["sapling/sweeper@0.1.0 roblox", "standard"]
+Sweeper = ["sapling/sweeper@0.1.0 roblox", "standard"]
 
 [graph."sapling/base_object@0.1.0 roblox".pkg_ref]
 ref_ty = "workspace"
@@ -138,7 +138,7 @@ path = "packages/baseObject"
 
 [graph."sapling/base_object@0.1.0 roblox".pkg_ref.dependencies]
 scripts = [{ name = "pesde/scripts_rojo", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
-sweeper = [{ workspace = "sapling/sweeper", version = "=" }, "standard"]
+Sweeper = [{ workspace = "sapling/sweeper", version = "=" }, "standard"]
 
 [graph."sapling/sweeper@0.1.0 roblox".pkg_ref]
 ref_ty = "workspace"

@@ -18,7 +18,7 @@ export type Binder<T> =
 			_Tag: string,
 			_ClassInstances: { [Instance]: ClassInterface<T> },
 		},
-		typeof({ __index = Binder })
+		Binder
 	))
 	& BaseObject.BaseObject
 
