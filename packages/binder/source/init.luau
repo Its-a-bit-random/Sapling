@@ -154,6 +154,10 @@ function Binder.Start<T>(self: Binder<T>)
 			warn("Already has class binded")
 			return
 		end
+		if not self._Predicate(instance) then
+			return
+		end
+
 		self._ClassInstances[instance] = self._Class.new(instance)
 	end))
 
@@ -162,6 +166,7 @@ function Binder.Start<T>(self: Binder<T>)
 		if class == nil then
 			return
 		end
+
 		self._Class.Destroy(class)
 		self._ClassInstances[instance] = nil
 	end))
