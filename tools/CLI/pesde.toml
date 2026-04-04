@@ -2,6 +2,12 @@ name = "sapling/cli"
 version = "1.0.0"
 license = "MIT"
 
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
 [target]
 environment = "lune"
 bin = "source/main.luau"
+
+[dependencies]
+cli_builder = { name = "4x8matrix/cli_builder", version = "^0.1.0-dev.1", target = "luau" }
