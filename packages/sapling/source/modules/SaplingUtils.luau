@@ -8,7 +8,7 @@ function SaplingUtils.MakeMethodFunctionCall<A..., R...>(
 ): (A...) -> R...
 	local fn = assert(service[methodName], `Method {methodName} not found on {service.ServiceName}`)
 	return function(...: A...)
-		return fn(...)
+		return fn(service, ...)
 	end
 end
 
