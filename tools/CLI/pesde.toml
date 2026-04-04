@@ -4,4 +4,4 @@ license = "MIT"
 
 [target]
 environment = "lune"
-bin = "main.luau"
+bin = "source/main.luau"
