@@ -23,7 +23,7 @@ local Sweeper = require(script.Parent.roblox_packages.Sweeper)
 ]=]
 
 local BaseObject = {}
-BaseObject.ClassName = BaseObject
+BaseObject.ClassName = "BaseObject"
 BaseObject.__index = BaseObject
 
 export type BaseObject = typeof(setmetatable(

@@ -1,4 +1,4 @@
-name = "sapling/base_object"
+name = "sapling/binder"
 version = "0.1.0"
 license = "MIT"
 
@@ -18,7 +18,7 @@ sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
 scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
 
 [dependencies]
-Sweeper = { workspace = "sapling/sweeper", version = "=" }
+BaseObject = { workspace = "sapling/base_object", version = "=" }
 
 [engines]
 pesde = "^0.7.0"
