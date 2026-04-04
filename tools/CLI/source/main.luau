@@ -205,7 +205,7 @@ CLI.new()
 	:setDescription("A small utility CLI tool to help with adding Sapling packages to your project")
 	:setCopyright("Copyright (c) 2026 Its-a-bit-random")
 	:setLicense("MIT")
-	:setHomepage("https://sapling.itsabitrandom.com")
+	:setHomepage("https://sapling.itsabitrandom.com/docs/CLI")
 	:addOption(
 		option
 			.new()
