@@ -234,9 +234,20 @@ CLI.new()
 		:addArgument(
 			argument.new():setName("name"):setDescription("Name of the package"):setRequired(true):setType("string")
 		)
+		:addOption(
+			option
+				.new()
+				:setName("save-dev")
+				:setDescription("Save the package in dev dependenies")
+				:setDefaultValue(false)
+				:setType("boolean")
+				:addAlias("d")
+				:build()
+		)
 		:setCallback(function(context)
 			local pesdePath = context.globalOptions["project-path"] :: string
 			local packageName = context.commandArguments["name"] :: string
+			local devDep = context.commandOptions["save-dev"] :: boolean
 
 			if not isFilePesdeManifest(pesdePath) then
 				printError("Path doesn't point to pesde manifest file")
@@ -264,15 +275,27 @@ CLI.new()
 				Process.exit(1)
 			end
 
-			local deps = pesdeManieftData.dependencies or {}
-			deps[(string.upper(string.sub(packageName, 1, 1)) .. string.sub(packageName, 2, -1))] = {
-				repo = "its-a-bit-random/sapling",
-				rev = rev,
-				path = `packages/{packageName}`,
-			}
-			pesdeManieftData.dependencies = deps
-			local newData = Serde.encode("toml", pesdeManieftData)
-			Fs.writeFile(pesdePath, newData)
+			if devDep then
+				local deps = pesdeManieftData.dev_dependencies or {}
+				deps[(string.upper(string.sub(packageName, 1, 1)) .. string.sub(packageName, 2, -1))] = {
+					repo = "its-a-bit-random/sapling",
+					rev = rev,
+					path = `packages/{packageName}`,
+				}
+				pesdeManieftData.dev_dependencies = deps
+				local newData = Serde.encode("toml", pesdeManieftData)
+				Fs.writeFile(pesdePath, newData)
+			else
+				local deps = pesdeManieftData.dependencies or {}
+				deps[(string.upper(string.sub(packageName, 1, 1)) .. string.sub(packageName, 2, -1))] = {
+					repo = "its-a-bit-random/sapling",
+					rev = rev,
+					path = `packages/{packageName}`,
+				}
+				pesdeManieftData.dependencies = deps
+				local newData = Serde.encode("toml", pesdeManieftData)
+				Fs.writeFile(pesdePath, newData)
+			end
 
 			print(`Installed package: {packageName}`)
 			Stdio.write(Stdio.color("yellow"))
