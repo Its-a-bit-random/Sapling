@@ -67,7 +67,7 @@ export type Binder<T> =
 	typeof(setmetatable(
 		{} :: {
 			_Class: ClassInterface<T>,
-			_Tag: string,
+			_Config: BinderConfig,
 			_ClassInstances: { [Instance]: ClassInterface<T> },
 			_Predicate: (instance: Instance) -> boolean,
 		},
@@ -115,7 +115,7 @@ function Binder.new<T>(tag: string | BinderConfig, class: ClassInterface<T>): Bi
 
 	local self: Binder<T> = setmetatable(BaseObject.new(), Binder)
 	self._Class = class
-	self._Tag = tag
+	self._Config = tag
 	self._ClassInstances = {}
 	self._Predicate = function(instance: Instance)
 		local hasTag = true
@@ -202,17 +202,19 @@ end
 	Connects the [CollectionService] events needed to listen to tags.
 ]=]
 function Binder.Start<T>(self: Binder<T>)
-	for _, v in CollectionService:GetTagged(self._Tag) do
-		self._ClassInstances[v] = self._Class.new(v)
+	for _, tag in self._Config.Tags do
+		for _, v in CollectionService:GetTagged(tag) do
+			self:_Add(v)
+		end
+
+		self._Sweeper:Add(CollectionService:GetInstanceAddedSignal(tag):Connect(function(instance: Instance)
+			self:_Add(instance)
+		end))
+
+		self._Sweeper:Add(CollectionService:GetInstanceRemovedSignal(tag):Connect(function(instance: Instance)
+			self:_Remove(instance)
+		end))
 	end
-
-	self._Sweeper:Add(CollectionService:GetInstanceAddedSignal(self._Tag):Connect(function(instance: Instance)
-		self:_Add(instance)
-	end))
-
-	self._Sweeper:Add(CollectionService:GetInstanceRemovedSignal(self._Tag):Connect(function(instance: Instance)
-		self:_Remove(instance)
-	end))
 end
 
 return Binder
