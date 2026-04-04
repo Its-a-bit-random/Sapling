@@ -17,6 +17,9 @@ sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
 [dev_dependencies]
 scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
 
+[dependencies]
+BaseObject = { workspace = "sapling/base_object", version = "=" }
+
 [engines]
 pesde = "^0.7.0"
 lune = "^0.10.2"
