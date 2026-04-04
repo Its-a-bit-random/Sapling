@@ -8,3 +8,5 @@ rojo build packages/registry -o build/registry.rbxm
 rojo build packages/sweeper -o build/sweeper.rbxm
 rojo build packages/baseObject -o build/baseObject.rbxm
 rojo build packages/binder -o build/binder.rbxm
+rojo build packages/instanceUtils -o build/instanceUtils.rbxm
+rojo build packages/typeUtils -o build/typeUtils.rbxm
