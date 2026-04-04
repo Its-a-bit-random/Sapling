@@ -19,16 +19,13 @@ RainbowEffect.__index = RainbowEffect
 
 function RainbowEffect.new(instance: Part)
 	local self = setmetatable({}, RainbowEffect)
-	self.thread = task.spawn(function()
-		while true do
-			task.wait(1)
-			instance.BrickColor = BrickColor.random()
-		end
-	end)
+	self.p = instance
+	self.p.Color = Color3.fromRGB(255, 255, 0)
+	return self
 end
 
 function RainbowEffect.Destroy(self)
-	task.cancel(self.thread)
+	self.p.Color = Color3.fromRGB(255, 0, 0)
 end
 
 local coolBinder = binder.new("Rainbow", RainbowEffect)
