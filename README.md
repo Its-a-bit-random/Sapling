@@ -26,16 +26,14 @@ More info about installing and consuming packages can be found [here](https://sa
 
 ## Packages
 
-Below is a list of every pacakge and its path and docs link.
-
-<!--moonwave-hide-before-this-line-->
-
 | Package | Path | Docs |
 | ------- | :--: | :---: |
-| Sapling | `packages/sapling` | [Docs](https://sapling.itsabitrandom.com/api/Sapling) |
-| Lifelike Characters Service | `packages/lifelikeCharactersService` | [Docs](https://sapling.itsabitrandom.com/api/LifelikeCharactersService) |
-| QueryBuilder | `packages/queryBuilder` | [Docs](https://sapling.itsabitrandom.com/api/QueryBuilder) |
-| Registry | `packages/registry` | [Docs](https://sapling.itsabitrandom.com/api/Registry) |
-| Sweeper | `packages/sweeper` | [Docs](https://sapling.itsabitrandom.com/api/Sweeper) |
-| BaseObject | `packages/baseObject` | [Docs](https://sapling.itsabitrandom.com/api/BaseObject) |
+| Baseobject | `packages/baseobject` | [Docs](https://sapling.itsabitrandom.com/api/Baseobject) |
 | Binder | `packages/binder` | [Docs](https://sapling.itsabitrandom.com/api/Binder) |
+| Instanceutils | `packages/instanceutils` | [Docs](https://sapling.itsabitrandom.com/api/Instanceutils) |
+| Lifelikecharactersservice | `packages/lifelikecharactersservice` | [Docs](https://sapling.itsabitrandom.com/api/Lifelikecharactersservice) |
+| Querybuilder | `packages/querybuilder` | [Docs](https://sapling.itsabitrandom.com/api/Querybuilder) |
+| Registry | `packages/registry` | [Docs](https://sapling.itsabitrandom.com/api/Registry) |
+| Sapling | `packages/sapling` | [Docs](https://sapling.itsabitrandom.com/api/Sapling) |
+| Sweeper | `packages/sweeper` | [Docs](https://sapling.itsabitrandom.com/api/Sweeper) |
+| Typeutils | `packages/typeutils` | [Docs](https://sapling.itsabitrandom.com/api/Typeutils) |
