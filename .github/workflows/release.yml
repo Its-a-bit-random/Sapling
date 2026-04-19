@@ -2,9 +2,6 @@ name: publish-docs-and-draft-release
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - 'v*'
 
 permissions:
   contents: write
@@ -35,37 +32,5 @@ jobs:
           git config --global user.email "support+actions@github.com"
           git config --global user.name "github-actions-bot"
           moonwave build --code packages/ --publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install deps
-        run: pesde install
-
-      - name: Make build script executable
-        run: chmod +x bin/build.sh
-
-      - name: Build release assets
-        run: ./bin/build.sh
-
-      - name: Verify build directory exists
-        run: |
-          if [ ! -d "build" ]; then
-            echo "build directory does not exist"
-            exit 1
-          fi
-
-          if [ -z "$(find build -type f)" ]; then
-            echo "build directory contains no files"
-            exit 1
-          fi
-
-      - name: Create draft GitHub release
-        uses: softprops/action-gh-release@v2
-        with:
-          draft: true
-          tag_name: ${{ github.ref_name }}
-          name: ${{ github.ref_name }}
-          files: |
-            build/**
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
