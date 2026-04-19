@@ -1,9 +1,10 @@
-<div align="center">
+<div align="center" style="text-decoration: none;">
     <h1>🌱 Sapling</h1>
-    <a href="https://github.com/Its-a-bit-random/Sapling/releases"> <img src=".moonwave/static/Community-GitHub-link-github-releases.svg"> </a>
-    <a href="https://github.com/Its-a-bit-random/Sapling/tree/main/packages"> <img src=".moonwave/static/Community-Package-link-pesde.svg"> </a>
-    <a href="https://github.com/Its-a-bit-random/Sapling/blob/main/changelog.md"> <img src=".moonwave/static/Roblox-Styled-Original-link-changelog.svg"> </a>
-    <a href="https://sapling.itsabitrandom.com"> <img src=".moonwave/static/Roblox-Styled-Original-link-docs.svg"> </a>
+    <a href="https://github.com/Its-a-bit-random/Sapling/releases"><img src=".moonwave/static/Community-GitHub-link-github-releases.svg"></a>
+    <a href="https://github.com/Its-a-bit-random/Sapling/tree/main/packages"><img src=".moonwave/static/Community-Package-link-pesde.svg"></a>
+    <a href="https://github.com/Its-a-bit-random/Sapling/blob/main/changelog.md"><img src=".moonwave/static/Roblox-Styled-Original-link-changelog.svg"></a>
+    <a href="https://sapling.itsabitrandom.com"><img src=".moonwave/static/Roblox-Styled-Original-link-docs.svg"></a>
+    <a href="https://sapling.itsabitrandom.com/docs/Installing"><img src=".moonwave/static/Roblox-Styled-Original-link-download.svg"></a>
 </div>
 
 Sapling Framework is an ecosystem of packages which aim to speed up and improvde DX when developing games on Roblox. Sapling is the successor of [Catalyst](https://github.com/Sebastian2852/Catalyst) which had fundemental issues which would take recoding the whole thing to fix so I decided to make a new framework.
