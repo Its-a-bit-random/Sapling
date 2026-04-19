@@ -27,14 +27,10 @@ Sapling.fireLifecycle("OnStart")
 
 ## Specifing Dependencies
 
-:::info
-In the future I might make a little CLI tool to aid with dependencies.
-:::
+All sapling dependencies are found under the `sapling` scope on the official Pesde registry.
 
-First you need to decide which version of Sapling you want to use, you shouldn't really update Major version of Sapling as they will bring breaking changes. Furthermoer all packages must be on the same version to work fully.
-
-Here is an example of consuming the core `sapling` package:
 ```toml
 [dependencies]
-Sapling = { repo = "its-a-bit-random/Sapling", rev = "v1.0.0", path = "packages/sapling" }
+Sapling = { name = "sapling/sapling", version = "2.0.0" }
 ```
+
