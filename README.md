@@ -7,26 +7,7 @@
     <a href="https://sapling.itsabitrandom.com/docs/Installing"><img src=".moonwave/static/Roblox-Styled-Original-link-download.svg"></a>
 </div>
 
-Sapling Framework is an ecosystem of packages which aim to speed up and improvde DX when developing games on Roblox. Sapling is the successor of [Catalyst](https://github.com/Sebastian2852/Catalyst) which had fundemental issues which would take recoding the whole thing to fix so I decided to make a new framework.
-
-## Usage
-
-To use sapling you will need to have [pesde](https://pesde.dev/) installed and a project setup for a Roblox environment.
-
-Sapling is versioned using Git tags. All packages you install that are a part of the ecosystem need to be from the same git tag or commit. While not striclty necessary in most cases, in some cases it may be required as a package could depend on anotther.
-
-*Please see [here](https://github.com/pesde-pkg/pesde/issues/59) why this package should be installed via git dependencies and not through a registry.*
-
-Installing pacakges is as simple as adding a dependencies into your `pesde.toml` manifest. You will need to specify a path due to this repo being a mono-repo. In the future we may decide to create a CLI tool to assist with doing so but for now you need to manually add each package, and its peer dependencies.
-
-As an example in your Pesde manifest to use the core `Sapling` package, you would add the following to the dependencies section:
-
-```toml
-[Dependencies]
-Sapling = { repo = "its-a-bit-random/Sapling", rev = "v1.0.0", path = "packages/sapling" }
-```
-
-More info about installing and consuming packages can be found [here](https://sapling.itsabitrandom.com/docs/installing)
+Sapling is a modular set of packages that provides the core building blocks for: game development, service loading, base classes, memory management, and more. It’s designed to give you a clean, structured foundation so you can focus on actually building your game instead of reinventing common systems.
 
 ## Packages
 
