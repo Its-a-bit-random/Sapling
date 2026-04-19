@@ -2,7 +2,7 @@ name = "apple_pear_studio/sapling"
 version = "0.0.0"
 private = true
 
-workspace_members = [ "packages/*", "tools/*" ]
+workspace_members = [ "packages/*" ]
 
 [target]
 environment = "roblox"
