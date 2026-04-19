@@ -7,10 +7,10 @@ local BaseDispatcher = {}
 BaseDispatcher.__index = BaseDispatcher
 
 export type BaseDispatcher = typeof(setmetatable(
-	{} :: {
-		__ClassName: string,
-	},
-	BaseDispatcher
+    {} :: {
+        __ClassName: string,
+    },
+    BaseDispatcher
 ))
 
 --[=[
@@ -22,7 +22,7 @@ export type BaseDispatcher = typeof(setmetatable(
 	Returns all function on services which have the passed `name`.
 ]=]
 function BaseDispatcher.collectFunctions(self: BaseDispatcher, name: string)
-	return ServiceManager.collectFunctions(name)
+    return ServiceManager.collectFunctions(name)
 end
 
 --[=[
@@ -34,7 +34,7 @@ end
 	This is the method which is called by a lifecycle to actually call all the functions.
 ]=]
 function BaseDispatcher.dispatch(self: BaseDispatcher, name: string, ...: any)
-	error("No dispatch impl")
+    error("No dispatch impl")
 end
 
 --[=[
@@ -46,9 +46,9 @@ end
 	your own dispatcher.
 ]=]
 function BaseDispatcher.new()
-	local self = setmetatable({}, BaseDispatcher) :: BaseDispatcher
-	self.__ClassName = "BaseDispatcher"
-	return self
+    local self = setmetatable({}, BaseDispatcher) :: BaseDispatcher
+    self.__ClassName = "BaseDispatcher"
+    return self
 end
 
 --[=[
@@ -60,11 +60,11 @@ end
 	Check if the passed `obj` is a dispatcher, this can be either the [BaseDispatcher] or any class which extends [BaseDispatcher].
 ]=]
 function BaseDispatcher.is<T>(obj: T)
-	if typeof(obj) ~= "table" then
-		return false
-	end
+    if typeof(obj) ~= "table" then
+        return false
+    end
 
-	return obj["__ClassName"] == "BaseDispatcher"
+    return obj["__ClassName"] == "BaseDispatcher"
 end
 
 return BaseDispatcher

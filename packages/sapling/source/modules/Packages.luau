@@ -12,26 +12,26 @@ local Packages = {}
 	Returns the global API that should be put into `_G`.
 ]=]
 function Packages.getGlobalAPI()
-	return {
-		addModule = function(module: ModuleScript)
-			table.insert(packageModules, module)
-		end,
-	} :: types.InjectedAPI
+    return {
+        addModule = function(module: ModuleScript)
+            table.insert(packageModules, module)
+        end,
+    } :: types.InjectedAPI
 end
 
 --[=[
 	Returns all the modules that registered themselves with the `_G` api.
 ]=]
 function Packages.getModules()
-	return packageModules
+    return packageModules
 end
 
 --[=[
 	Calls the entry point of every package.
 ]=]
 function Packages.callLifecycles()
-	local lf = Lifecycle.new("saplingPackageStart")
-	lf:fire()
+    local lf = Lifecycle.new("saplingPackageStart")
+    lf:fire()
 end
 
 return Packages

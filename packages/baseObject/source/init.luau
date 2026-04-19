@@ -27,23 +27,23 @@ BaseObject.ClassName = "BaseObject"
 BaseObject.__index = BaseObject
 
 export type BaseObject = typeof(setmetatable(
-	{} :: {
-		_Sweeper: Sweeper.Sweeper,
-	},
-	BaseObject
+    {} :: {
+        _Sweeper: Sweeper.Sweeper,
+    },
+    BaseObject
 ))
 
 --[=[]=]
 function BaseObject.new()
-	local self: BaseObject = setmetatable({}, BaseObject)
-	self._Sweeper = Sweeper.new()
-	return self
+    local self: BaseObject = setmetatable({}, BaseObject)
+    self._Sweeper = Sweeper.new()
+    return self
 end
 
 --[=[]=]
 function BaseObject.Destroy(self: BaseObject)
-	self._Sweeper:Destroy()
-	setmetatable(self, nil)
+    self._Sweeper:Destroy()
+    setmetatable(self, nil)
 end
 
 return BaseObject

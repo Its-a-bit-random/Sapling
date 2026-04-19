@@ -1,5 +1,5 @@
-local types = require(script.Parent.Parent.types)
 local SaplingUtils = require(script.Parent.SaplingUtils)
+local types = require(script.Parent.Parent.types)
 type Service = types.Service
 
 local services = {} :: { [ModuleScript]: Service }
@@ -15,26 +15,26 @@ local ServiceManager = {}
 	using `safeRequire` and throws a custom, better error message.
 ]=]
 function ServiceManager.addService(service: Service)
-	assert(service.ServiceName, "Service has no name")
-	services[service.ServiceName] = service
+    assert(service.ServiceName, "Service has no name")
+    services[service.ServiceName] = service
 end
 
 --[=[
 	Gets every function in the service which has the name `name`.
 ]=]
 function ServiceManager.collectFunctions(name: string): { (...any) -> () }
-	local functions = {} :: { (...any) -> () }
+    local functions = {} :: { (...any) -> () }
 
-	for _, v in services do
-		local fn = v[name]
-		if fn == nil then
-			continue
-		end
+    for _, v in services do
+        local fn = v[name]
+        if fn == nil then
+            continue
+        end
 
-		table.insert(functions, SaplingUtils.MakeMethodFunctionCall(v, name))
-	end
+        table.insert(functions, SaplingUtils.MakeMethodFunctionCall(v, name))
+    end
 
-	return functions
+    return functions
 end
 
 return ServiceManager

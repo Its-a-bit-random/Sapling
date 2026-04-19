@@ -18,7 +18,7 @@ export type Service = { [string | unknown]: unknown } & { ["ServiceName"]: strin
 	calling `require` on every single pacakge you use in your game.
 ]=]
 export type InjectedAPI = {
-	addModule: (module: ModuleScript) -> (),
+    addModule: (module: ModuleScript) -> (),
 }
 
 return nil

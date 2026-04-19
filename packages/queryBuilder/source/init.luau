@@ -12,11 +12,11 @@ local QueryBuilder = {}
 QueryBuilder.__index = QueryBuilder
 
 export type QueryBuilder = typeof(setmetatable(
-	{} :: {
-		_Query: string,
-		_Not: boolean,
-	},
-	QueryBuilder
+    {} :: {
+        _Query: string,
+        _Not: boolean,
+    },
+    QueryBuilder
 ))
 
 --[=[
@@ -39,10 +39,10 @@ export type QueryBuilder = typeof(setmetatable(
 
 --[=[]=]
 function QueryBuilder.new()
-	local self = setmetatable({}, QueryBuilder) :: QueryBuilder
-	self._Query = ""
-	self._Not = false
-	return self
+    local self = setmetatable({}, QueryBuilder) :: QueryBuilder
+    self._Query = ""
+    self._Not = false
+    return self
 end
 
 --[=[
@@ -55,11 +55,11 @@ end
     like a closing brace if a §not§ operation was used.
 ]=]
 function QueryBuilder._AppendToQuery(self: QueryBuilder, append: string)
-	self._Query ..= append
-	if self._Not then
-		self._Not = false
-		self:_AppendToQuery(")")
-	end
+    self._Query ..= append
+    if self._Not then
+        self._Not = false
+        self:_AppendToQuery(")")
+    end
 end
 
 --[=[
@@ -72,8 +72,8 @@ end
     Adds the `tag` to the search query.
 ]=]
 function QueryBuilder.withTag(self: QueryBuilder, tag: string)
-	self:_AppendToQuery(`.{tag}`)
-	return self
+    self:_AppendToQuery(`.{tag}`)
+    return self
 end
 
 --[=[
@@ -90,8 +90,8 @@ end
     ```
 ]=]
 function QueryBuilder.either(self: QueryBuilder)
-	self:_AppendToQuery(", ")
-	return self
+    self:_AppendToQuery(", ")
+    return self
 end
 
 --[=[
@@ -104,8 +104,8 @@ end
     that match the previous cases.
 ]=]
 function QueryBuilder.child(self: QueryBuilder)
-	self:_AppendToQuery(" > ")
-	return self
+    self:_AppendToQuery(" > ")
+    return self
 end
 
 --[=[
@@ -117,8 +117,8 @@ end
     Same as [QueryBuilder.child] but for descendant.
 ]=]
 function QueryBuilder.descendant(self: QueryBuilder)
-	self:_AppendToQuery(" >> ")
-	return self
+    self:_AppendToQuery(" >> ")
+    return self
 end
 
 --[=[
@@ -133,9 +133,9 @@ end
     ```
 ]=]
 function QueryBuilder.negate(self: QueryBuilder)
-	self:_AppendToQuery(":not(")
-	self._Not = true
-	return self
+    self:_AppendToQuery(":not(")
+    self._Not = true
+    return self
 end
 
 --[=[
@@ -148,8 +148,8 @@ end
     Anything which has the `attributeName` set to anything but nil
 ]=]
 function QueryBuilder.hasAttribute(self: QueryBuilder, attributeName: string)
-	self:_AppendToQuery(`[${attributeName}]`)
-	return self
+    self:_AppendToQuery(`[${attributeName}]`)
+    return self
 end
 
 --[=[
@@ -163,8 +163,8 @@ end
     Anything which has the `attributeName` set to `attributeValue`. See more info about how `attributeValue` works: [QueryBuilder.wherePropertyIs]
 ]=]
 function QueryBuilder.whereAttributeIs(self: QueryBuilder, attributeName: string, attributeValue: string | any)
-	self:_AppendToQuery(`[${attributeName} = {attributeValue}]`)
-	return self
+    self:_AppendToQuery(`[${attributeName} = {attributeValue}]`)
+    return self
 end
 
 --[=[
@@ -177,8 +177,8 @@ end
     Anything which is a of class `class` (`:IsA()`)
 ]=]
 function QueryBuilder.whichIsA(self: QueryBuilder, class: string)
-	self:_AppendToQuery(class)
-	return self
+    self:_AppendToQuery(class)
+    return self
 end
 
 --[=[
@@ -191,8 +191,8 @@ end
     Anything which has the name `name`.
 ]=]
 function QueryBuilder.named(self: QueryBuilder, name: string)
-	self:_AppendToQuery(`#{name}`)
-	return self
+    self:_AppendToQuery(`#{name}`)
+    return self
 end
 
 --[=[
@@ -213,8 +213,8 @@ end
     :::
 ]=]
 function QueryBuilder.wherePropertyIs(self: QueryBuilder, property: string, value: string | any)
-	self:_AppendToQuery(`[{property} = {value}]`)
-	return self
+    self:_AppendToQuery(`[{property} = {value}]`)
+    return self
 end
 
 --[=[
@@ -224,7 +224,7 @@ end
     Returns the built up query string.
 ]=]
 function QueryBuilder.query(self: QueryBuilder): string
-	return self._Query
+    return self._Query
 end
 
 return QueryBuilder

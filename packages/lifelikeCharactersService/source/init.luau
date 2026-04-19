@@ -23,8 +23,8 @@ local LifelikeCharactersService = {}
 	Returns the client API. This can only be called on the client.
 ]=]
 function LifelikeCharactersService.getClient()
-	assert(RunService:IsClient(), "This can only be called on the client")
-	return LifelikeCharactersServiceClient
+    assert(RunService:IsClient(), "This can only be called on the client")
+    return LifelikeCharactersServiceClient
 end
 
 --[=[
@@ -34,8 +34,8 @@ end
 	Returns the server API. This can only be called on the server.
 ]=]
 function LifelikeCharactersService.getServer()
-	assert(RunService:IsServer(), "This can only be called on the server")
-	return LifelikeCharactersServiceServer
+    assert(RunService:IsServer(), "This can only be called on the server")
+    return LifelikeCharactersServiceServer
 end
 
 --[=[
@@ -43,11 +43,11 @@ end
 	Lifecycle function called by sapling to setup the package.
 ]=]
 function LifelikeCharactersService.saplingPackageStart()
-	if RunService:IsClient() then
-		LifelikeCharactersServiceClient.setup()
-	else
-		LifelikeCharactersServiceServer.setup()
-	end
+    if RunService:IsClient() then
+        LifelikeCharactersServiceClient.setup()
+    else
+        LifelikeCharactersServiceServer.setup()
+    end
 end
 
 return LifelikeCharactersService

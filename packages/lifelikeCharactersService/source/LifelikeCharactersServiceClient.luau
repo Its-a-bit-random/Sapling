@@ -12,10 +12,10 @@ local player = Players.LocalPlayer
 local firstPersonOffset = -1.5
 
 local headReplication = {
-	rate = 1 / 30,
-	lastSent = 0,
-	lastXAngleSent = 0,
-	lastYAngleSent = 0,
+    rate = 1 / 30,
+    lastSent = 0,
+    lastXAngleSent = 0,
+    lastYAngleSent = 0,
 }
 
 --[=[
@@ -34,7 +34,7 @@ local LifelikeCharactersServiceClient = {}
 	:::
 ]=]
 function LifelikeCharactersServiceClient.setHeadRotationReplicationRate(rate: number)
-	headReplication.rate = rate
+    headReplication.rate = rate
 end
 
 --[=[
@@ -42,21 +42,21 @@ end
 	the negative scale is farward relative to the head.
 ]=]
 function LifelikeCharactersServiceClient.setFirstPersonOffset(offset: number)
-	firstPersonOffset = offset
+    firstPersonOffset = offset
 end
 
 --[=[
 	[HeadSystem.setBounds]
 ]=]
 function LifelikeCharactersServiceClient.setHeadRotationClampValues(lower: number?, upper: number?)
-	HeadSystem.setBounds(lower, upper)
+    HeadSystem.setBounds(lower, upper)
 end
 
 --[=[
 	[HeadSystem.setCustomHeadOffset]
 ]=]
 function LifelikeCharactersServiceClient.setCustomHeadOffset(headOffset: number?)
-	HeadSystem.setCustomHeadOffset(headOffset)
+    HeadSystem.setCustomHeadOffset(headOffset)
 end
 
 --[=[
@@ -66,14 +66,14 @@ end
     the normal roblox walking sound however this can be overrided with [LifelikeCharactersServiceClient.changeFallbackSound].
 ]=]
 function LifelikeCharactersServiceClient.updateSoundForMaterial(material: Enum.Material, sound: string?)
-	FootstepSystem.updateSoundForMaterial(material, sound)
+    FootstepSystem.updateSoundForMaterial(material, sound)
 end
 
 --[=[
     Change the default footstep sound that is used when a [Material] doesnt have a sound set.
 ]=]
 function LifelikeCharactersServiceClient.changeFallbackSound(sound: string)
-	FootstepSystem.changeFallbackSound(sound)
+    FootstepSystem.changeFallbackSound(sound)
 end
 
 --[=[
@@ -83,57 +83,57 @@ end
     If you call this function it will error.
 ]=]
 function LifelikeCharactersServiceClient.setup()
-	assert(not isSetup, "Setup has already been called")
-	isSetup = true
-	FootstepSystem.setupFootsteps()
+    assert(not isSetup, "Setup has already been called")
+    isSetup = true
+    FootstepSystem.setupFootsteps()
 
-	RunService:BindToRenderStep("FirstPerson", Enum.RenderPriority.Camera.Value + 1, function()
-		local character = player.Character
-		if character == nil then
-			return
-		end
+    RunService:BindToRenderStep("FirstPerson", Enum.RenderPriority.Camera.Value + 1, function()
+        local character = player.Character
+        if character == nil then
+            return
+        end
 
-		FirstPersonBody.makeCharacterVisible(character)
+        FirstPersonBody.makeCharacterVisible(character)
 
-		local distance = (character.Head.Position :: Vector3 - Workspace.CurrentCamera.CFrame.Position).Magnitude
-		if distance <= 1.6 then
-			FirstPersonBody.setOffset(firstPersonOffset)
-		else
-			FirstPersonBody.setOffset(0)
-		end
-	end)
+        local distance = (character.Head.Position :: Vector3 - Workspace.CurrentCamera.CFrame.Position).Magnitude
+        if distance <= 1.6 then
+            FirstPersonBody.setOffset(firstPersonOffset)
+        else
+            FirstPersonBody.setOffset(0)
+        end
+    end)
 
-	Network.UpdateLookAnglesRemote.OnClientEvent:Connect(function(character: Model, buf: buffer)
-		if character == nil then
-			return
-		end
-		local yAngle, xAngle = Network.desLookAngles(buf)
-		HeadSystem.updateLookAngles(character, yAngle, xAngle)
-	end)
+    Network.UpdateLookAnglesRemote.OnClientEvent:Connect(function(character: Model, buf: buffer)
+        if character == nil then
+            return
+        end
+        local yAngle, xAngle = Network.desLookAngles(buf)
+        HeadSystem.updateLookAngles(character, yAngle, xAngle)
+    end)
 
-	local count = 0
-	RunService.Heartbeat:Connect(function(dt)
-		count += dt
+    local count = 0
+    RunService.Heartbeat:Connect(function(dt)
+        count += dt
 
-		local character = player.Character
-		if character == nil then
-			return
-		end
+        local character = player.Character
+        if character == nil then
+            return
+        end
 
-		local camera = Workspace.CurrentCamera
-		local humanoidRootPart = character:FindFirstChild("HumanoidRootPart") :: Part
+        local camera = Workspace.CurrentCamera
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart") :: Part
 
-		local yAngle, xAngle = HeadSystem.calculateLookAngles(camera.CFrame, humanoidRootPart.CFrame)
-		HeadSystem.updateLookAngles(character, yAngle, xAngle)
+        local yAngle, xAngle = HeadSystem.calculateLookAngles(camera.CFrame, humanoidRootPart.CFrame)
+        HeadSystem.updateLookAngles(character, yAngle, xAngle)
 
-		if count >= headReplication.rate then
-			if headReplication.lastXAngleSent == xAngle or headReplication.lastYAngleSent == yAngle then
-				return
-			end
-			Network.UpdateLookAnglesRemote:FireServer(Network.serLookAngles(yAngle, xAngle))
-			headReplication.lastXAngleSent, headReplication.lastYAngleSent = xAngle, yAngle
-		end
-	end)
+        if count >= headReplication.rate then
+            if headReplication.lastXAngleSent == xAngle or headReplication.lastYAngleSent == yAngle then
+                return
+            end
+            Network.UpdateLookAnglesRemote:FireServer(Network.serLookAngles(yAngle, xAngle))
+            headReplication.lastXAngleSent, headReplication.lastYAngleSent = xAngle, yAngle
+        end
+    end)
 end
 
 return LifelikeCharactersServiceClient
