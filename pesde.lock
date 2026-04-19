@@ -6,19 +6,19 @@ version = "0.0.0"
 target = "roblox"
 
 [workspace."sapling/base_object"]
-roblox = "packages/baseObject"
+roblox = "packages/base_object"
 
 [workspace."sapling/binder"]
 roblox = "packages/binder"
 
 [workspace."sapling/instance_utils"]
-roblox = "packages/instanceUtils"
+roblox = "packages/instance_utils"
 
 [workspace."sapling/lifelike_characters_service"]
-roblox = "packages/lifelikeCharactersService"
+roblox = "packages/lifelike_characters_service"
 
 [workspace."sapling/query_builder"]
-roblox = "packages/queryBuilder"
+roblox = "packages/query_builder"
 
 [workspace."sapling/registry"]
 roblox = "packages/registry"
@@ -30,7 +30,7 @@ roblox = "packages/sapling"
 roblox = "packages/sweeper"
 
 [workspace."sapling/types_utils"]
-roblox = "packages/typeUtils"
+roblox = "packages/type_utils"
 
 [graph."0x5eal/unzip@0.2.0 luau".pkg_ref]
 ref_ty = "pesde"

@@ -134,7 +134,7 @@ Sweeper = ["sapling/sweeper@1.0.0 roblox", "standard"]
 
 [graph."sapling/base_object@1.0.0 roblox".pkg_ref]
 ref_ty = "workspace"
-path = "packages/baseObject"
+path = "packages/base_object"
 
 [graph."sapling/base_object@1.0.0 roblox".pkg_ref.dependencies]
 scripts = [{ name = "pesde/scripts_rojo", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]

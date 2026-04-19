@@ -131,7 +131,7 @@ direct = ["TypeUtils", { workspace = "sapling/types_utils", version = "^1.0.0" }
 
 [graph."sapling/types_utils@1.0.0 roblox".pkg_ref]
 ref_ty = "workspace"
-path = "packages/typeUtils"
+path = "packages/type_utils"
 
 [graph."sapling/types_utils@1.0.0 roblox".pkg_ref.dependencies]
 scripts = [{ name = "pesde/scripts_rojo", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
