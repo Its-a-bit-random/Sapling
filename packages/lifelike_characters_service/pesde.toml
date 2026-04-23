@@ -1,5 +1,5 @@
 name = "sapling/lifelike_characters_service"
-version = "1.0.0"
+version = "1.0.1"
 license = "MIT"
 repository = "https://github.com/Its-a-bit-random/Sapling"
 authors = [ "Sebastian S <gramps@itsabitrandom.com>" ]

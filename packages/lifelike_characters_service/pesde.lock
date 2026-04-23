@@ -2,5 +2,5 @@
 # It is not intended for manual editing.
 format = 2
 name = "sapling/lifelike_characters_service"
-version = "1.0.0"
+version = "1.0.1"
 target = "roblox"

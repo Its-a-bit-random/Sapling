@@ -25,6 +25,48 @@ local havePackagesBeenStarted = false
 ]=]
 local Sapling = {}
 
+local function loadSaplingPackages()
+    local packagesFolder = (_G.SAPLING_PACKAGES_FOLDER or nil) :: Folder
+    if packagesFolder == nil then
+        local parent = script
+        while parent and parent:FindFirstChild(".pesde") == nil do
+            parent = parent.Parent
+        end
+        if parent == nil then
+            warn([[
+                [SAPLING] Cannot locate packages folder
+                    Sapling could not find the packages folder. Currently this only works if sapling is installed
+                    with the PESDE package manager. If you encouter this error please submit a bug report at:
+                        https://github.com/Its-a-bit-random/Sapling/issues/new/choose
+
+                    You can also manually set the packages folder using:
+                        _G.SAPLING_PACKAGES_FOLDER = <Packages>
+                    Before you call .loadServices()
+            ]])
+            return
+        end
+        packagesFolder = parent
+    end
+
+    local instances = packagesFolder:GetChildren()
+    local modules = filterArray(instances, instanceOf("ModuleScript")) :: { ModuleScript }
+
+    _G.Sapling = Packages.getGlobalAPI()
+    for _, v in modules do
+        -- We use safe require here and discard any errors because some modules may
+        -- have some asserts about being on the server/client.
+        safeRequire(v)
+    end
+    _G.Sapling = nil
+
+    local packageModules = Packages.getModules()
+    for _, v in packageModules do
+        Sapling.loadService(v)
+    end
+
+    Packages.callLifecycles()
+end
+
 --[=[
 	Load a single service from a module
 ]=]
@@ -52,6 +94,10 @@ end
 	Loads all module scripts under `parent` ignoring anything which isn't a [ModuleScript] instance.
 ]=]
 function Sapling.loadServices(parent: Instance, recursive: boolean?)
+    if not havePackagesBeenStarted then
+        loadSaplingPackages()
+    end
+
     local instances = if recursive then parent:GetDescendants() else parent:GetChildren()
     local modules = filterArray(instances, instanceOf("ModuleScript")) :: { ModuleScript }
 
@@ -61,42 +107,10 @@ function Sapling.loadServices(parent: Instance, recursive: boolean?)
 end
 
 --[=[
-	This function only needs to be called if you are using any other Sapling Framework packages,
-	simply point it to your Packages folder and Sapling will handle the rest.
-
-	If you do not call this function at the right time, or at all, pacakges will throw an error and tell you that
-	you have not called this function.
-
-	:::warning
-	This function **NEEDS** to be called before you call `loadServices` otherwise packages will error.
-	:::
-
-	:::danger
-	If you use [Actor] you will need to call this in every [Actor] to avoid errors.
-	:::
-
-	@error "You can only call loadPackages one time" -- You should only call this function once, before you call `loadService`.
+	@deprecated v1.1.0 -- Function is obsolete and will be removed in the next MAJOR version.
 ]=]
-function Sapling.loadPackages(packagesFolder: Folder)
-    assert(not havePackagesBeenStarted, "You can only call loadPackages one time")
-
-    local instances = packagesFolder:GetChildren()
-    local modules = filterArray(instances, instanceOf("ModuleScript")) :: { ModuleScript }
-
-    _G.Sapling = Packages.getGlobalAPI()
-    for _, v in modules do
-        -- We use safe require here and discard any errors because some modules may
-        -- have some asserts about being on the server/client.
-        safeRequire(v)
-    end
-    _G.Sapling = nil
-
-    local packageModules = Packages.getModules()
-    for _, v in packageModules do
-        Sapling.loadService(v)
-    end
-
-    Packages.callLifecycles()
+function Sapling.loadPackages(_p: any)
+    warn(`Sapling.loadPackages() has been deprecated in 1.1.0 and no longer needs to be called`)
 end
 
 --[=[

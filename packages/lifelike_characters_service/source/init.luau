@@ -14,7 +14,7 @@ local LifelikeCharactersServiceServer = require(script.LifelikeCharactersService
 	- Seeing your body in first person
 	- Head following camera angle in first & third person.
 ]=]
-local LifelikeCharactersService = {}
+local LifelikeCharactersService = { ServiceName = "LifelikeCharactersService" }
 
 --[=[
 	@return LifelikeCharactersServiceClient
