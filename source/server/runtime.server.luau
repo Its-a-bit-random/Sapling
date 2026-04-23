@@ -1,14 +1,8 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local BlockingDispatcher = require(script.Parent.BlockingDispatcher)
 local binder = require(script.Parent.Parent.Parent.ReplicatedStorage.packages.binder.binder)
-local instanceUtils = require(script.Parent.Parent.Parent.ReplicatedStorage.packages.instanceUtils.instanceUtils)
 local queryBuilder = require(script.Parent.Parent.Parent.ReplicatedStorage.packages.queryBuilder)
 local sapling = require(script.Parent.Parent.Parent.ReplicatedStorage.packages.sapling)
 
-local part = instanceUtils.WaitForChildWhichIsA(workspace, "Humanoid")
-print(part)
-
-sapling.loadPackages(ReplicatedStorage.packages)
 sapling.loadServices(script.Parent.services)
 sapling.fireLifecycle("onStart")
 
@@ -22,14 +16,14 @@ local RainbowEffect = {}
 RainbowEffect.__index = RainbowEffect
 
 function RainbowEffect.new(instance: Part)
-	local self = setmetatable({}, RainbowEffect)
-	self.p = instance
-	self.p.Color = Color3.fromRGB(255, 255, 0)
-	return self
+    local self = setmetatable({}, RainbowEffect)
+    self.p = instance
+    self.p.Color = Color3.fromRGB(255, 255, 0)
+    return self
 end
 
 function RainbowEffect.Destroy(self)
-	self.p.Color = Color3.fromRGB(255, 0, 0)
+    self.p.Color = Color3.fromRGB(255, 0, 0)
 end
 
 local coolBinder = binder.new("Rainbow", RainbowEffect)
