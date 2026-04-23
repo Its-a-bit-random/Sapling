@@ -26,8 +26,8 @@ local havePackagesBeenStarted = false
 local Sapling = {}
 
 local function loadSaplingPackages()
-    local packagesFolder = nil :: Folder
-    do
+    local packagesFolder = (_G.SAPLING_PACKAGES_FOLDER or nil) :: Folder
+    if packagesFolder == nil then
         local parent = script
         while parent and parent:FindFirstChild(".pesde") == nil do
             parent = parent.Parent
@@ -36,8 +36,12 @@ local function loadSaplingPackages()
             warn([[
                 [SAPLING] Cannot locate packages folder
                     Sapling could not find the packages folder. Currently this only works if sapling is installed
-                    with the PESDE package manager. If you encouter this error please submit a bug report at
+                    with the PESDE package manager. If you encouter this error please submit a bug report at:
                         https://github.com/Its-a-bit-random/Sapling/issues/new/choose
+
+                    You can also manually set the packages folder using:
+                        _G.SAPLING_PACKAGES_FOLDER = <Packages>
+                    Before you call .loadServices()
             ]])
             return
         end
