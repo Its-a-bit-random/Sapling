@@ -1,0 +1,25 @@
+name = "sapling/rs_result"
+version = "1.0.0"
+license = "MIT"
+repository = "https://github.com/Its-a-bit-random/Sapling"
+authors = [ "Sebastian S <gramps@itsabitrandom.com>" ]
+includes = ["pesde.toml", "README.md", "source/**", "docs/**" ]
+
+[target]
+environment = "roblox"
+lib = "source/init.luau"
+build_files = ["source"]
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[scripts]
+roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
+sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
+
+[dev_dependencies]
+scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
+
+[engines]
+pesde = "^0.7.0"
+lune = "^0.10.2"
